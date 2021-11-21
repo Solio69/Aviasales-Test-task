@@ -1,0 +1,41 @@
+
+
+.filters{
+    background-color:#FFFFFF;
+    color: #4A4A4A;
+    border-radius: 3px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    
+
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 12px;
+        line-height: 12px;
+
+        padding: 20px;
+    }
+
+    ul{
+        list-style-type: none;
+        padding: 0 0 10px 20px;
+        margin: 0;
+        :first-child{
+            padding-top: 0;
+        }
+
+        li{
+            font-size: 13px;
+            line-height: 20px;
+            color: #4A4A4A;
+            padding: 10px 0;
+            
+        }
+    }
+}
