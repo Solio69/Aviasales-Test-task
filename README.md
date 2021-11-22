@@ -1,6 +1,6 @@
 Aviasales App 
 
-
+deployed application: 
 
 # 1 - Верстка
 В данном курсе мы реализуем тестовое задание от Aviasales на связке react + redux
@@ -12,6 +12,5 @@ Aviasales App
 
 Результатом должна быть ссылка на репозиторий гитхаб
 
-Сейчас:
 
 
