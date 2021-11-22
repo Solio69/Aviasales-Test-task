@@ -1,3 +1,3 @@
-import SelectionTabs from './SelectionTabs'
+import SelectionTabs from './SelectionTabs';
 
-export default SelectionTabs
+export default SelectionTabs;

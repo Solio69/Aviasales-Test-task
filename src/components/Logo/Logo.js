@@ -1,11 +1,8 @@
+import React from 'react';
+import logo from './Logo.svg';
 
-import logo from './Logo.svg'
-
-const Logo =()=>{
-
-    return(
-       <img src={logo} alt="logo"></img>
-    )
-}
+const Logo = function () {
+  return <img src={logo} alt="logo" />;
+};
 
 export default Logo;

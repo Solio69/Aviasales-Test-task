@@ -1,5 +1,4 @@
-// import './App.scss';
-
+import React from 'react';
 
 import styles from './App.module.scss';
 
@@ -10,45 +9,35 @@ import TicketsList from '../TicketsList';
 import Button from '../Button';
 import Burger from '../Burger';
 
-const App =() =>{
-
+const App = function () {
   return (
-    <div className={styles['app']}>
-     
-      <header className={styles['header']}>
+    <div className={styles.app}>
+      <header className={styles.header}>
         <div className={styles['header__logo-wrapper']}>
-          <Logo/>
+          <Logo />
         </div>
         <div className={styles['header__burger-wrapper']}>
-              <Burger/>
+          <Burger />
         </div>
       </header>
-      <main className={styles['main']}>
-        <section className={styles['main__content']}>
-        
+      <main className={styles.main}>
+        <section className={styles.main__content}>
           <div>
-            <Filters/>
+            <Filters />
           </div>
-          
           <div>
-            
             <div>
-              
-              <SelectionTabs/>
+              <SelectionTabs />
             </div>
             <div>
-              <TicketsList/>
-              <Button/>
+              <TicketsList />
+              <Button />
             </div>
           </div>
-          
         </section>
-               
-      </main> 
-    
-         
+      </main>
     </div>
   );
-}
+};
 
 export default App;
