@@ -15,5 +15,10 @@
         text-transform: uppercase;
         color: #FFFFFF;
     }
+    :hover { 
+        cursor: url('./Cursor.svg')4 12, auto;
+        transform: scale(1.1);
+        transition: transform 0.5s; 
+    }
 }
 

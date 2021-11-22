@@ -24,6 +24,14 @@
         box-sizing: border-box;
         
     }
+    :hover{
+        background: #2196F3;
+        color: #FFFFFF;
+        cursor: url('./Cursor.svg')4 12, auto;
+        
+        transition: color 0.5s;
+        transition: background 0.5s;
+    }
 
     .active{
         background: #2196F3;
