@@ -36,6 +36,30 @@
             color: #4A4A4A;
             padding: 10px 0;
             
+            .checkbox-input{
+                position: absolute;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                
+            }
+            .checkbox-input:checked + .check-box{
+                background-image: url('./check-on.svg');
+            }
+            .check-box{
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                margin-left: -30px;
+        
+                background-image: url('./check-off.svg');
+                background-repeat: no-repeat;
+            }
+            .checkbox-label{
+                padding-left: 30px;
+            }
         }
     }
+    
 }
