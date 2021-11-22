@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/JM-Aviasales-Test-task/static/css/main.d49ef053.chunk.css",
+    "main.js": "/JM-Aviasales-Test-task/static/js/main.6d92e408.chunk.js",
+    "main.js.map": "/JM-Aviasales-Test-task/static/js/main.6d92e408.chunk.js.map",
+    "runtime-main.js": "/JM-Aviasales-Test-task/static/js/runtime-main.4300c48a.js",
+    "runtime-main.js.map": "/JM-Aviasales-Test-task/static/js/runtime-main.4300c48a.js.map",
+    "static/js/2.df53719e.chunk.js": "/JM-Aviasales-Test-task/static/js/2.df53719e.chunk.js",
+    "static/js/2.df53719e.chunk.js.map": "/JM-Aviasales-Test-task/static/js/2.df53719e.chunk.js.map",
+    "index.html": "/JM-Aviasales-Test-task/index.html",
+    "static/css/main.d49ef053.chunk.css.map": "/JM-Aviasales-Test-task/static/css/main.d49ef053.chunk.css.map",
+    "static/js/2.df53719e.chunk.js.LICENSE.txt": "/JM-Aviasales-Test-task/static/js/2.df53719e.chunk.js.LICENSE.txt",
+    "static/media/Button.module.scss": "/JM-Aviasales-Test-task/static/media/Cursor.77a25422.svg",
+    "static/media/Logo.9c35a983.svg": "/JM-Aviasales-Test-task/static/media/Logo.9c35a983.svg",
+    "static/media/Filters.module.scss": "/JM-Aviasales-Test-task/static/media/check-on.1ce0103e.svg",
+    "static/media/menu.bff8004f.png": "/JM-Aviasales-Test-task/static/media/menu.bff8004f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4300c48a.js",
+    "static/js/2.df53719e.chunk.js",
+    "static/css/main.d49ef053.chunk.css",
+    "static/js/main.6d92e408.chunk.js"
+  ]
+}
