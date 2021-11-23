@@ -2,6 +2,7 @@
   "name": "aviasales-clone",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Solio69.github.io/JM-Aviasales-Test-task",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
@@ -10,7 +11,9 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -21,7 +24,8 @@
     "lint": "eslint ./src --color",
     "lint:fix": "eslint ./src --fix --color",
     "format": "prettier --write src/**/*.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.4.1"

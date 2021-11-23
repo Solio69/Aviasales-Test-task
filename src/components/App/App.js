@@ -2,14 +2,17 @@ import React from 'react';
 
 import styles from './App.module.scss';
 
+// components
 import Logo from '../Logo';
 import Filters from '../Filters';
-import SelectionTabs from '../SelectionTabs';
+import SortButtons from '../SortButtons';
 import TicketsList from '../TicketsList';
 import Button from '../Button';
 import Burger from '../Burger';
 
+
 const App = function () {
+
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -27,7 +30,7 @@ const App = function () {
           </div>
           <div>
             <div>
-              <SelectionTabs />
+              <SortButtons/>
             </div>
             <div>
               <TicketsList />
