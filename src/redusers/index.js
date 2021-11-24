@@ -3,9 +3,9 @@
 const initialState = {
 
   sortButtons: [
-  { name: 'inexpensive', label: 'Самый дешевый', isActive: false },
-  { name: 'quick', label: 'Самый быстрый', isActive: false  },
-  { name: 'optimal', label: 'Оптимальный', isActive: false  }
+    { name: 'inexpensive', label: 'Самый дешевый', isActive: true },
+    { name: 'quick', label: 'Самый быстрый', isActive: false  },
+    { name: 'optimal', label: 'Оптимальный', isActive: false  }
   ]
 };
 

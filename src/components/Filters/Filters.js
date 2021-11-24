@@ -2,6 +2,9 @@ import React from 'react';
 import styles from './Filters.module.scss';
 
 const Filters = function () {
+
+  
+
   return (
     <div className={styles.filters}>
       <div>Количество пересадок</div>
