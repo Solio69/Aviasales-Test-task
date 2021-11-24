@@ -8,4 +8,11 @@ const updateSortButtons = (newSortButtons) => {
   };
 };
 
-export {updateSortButtons};
+const updateFilters = (newFilters) => {
+  return {
+    type: 'UPDATE_FILTERS',
+    payload: newFilters,
+  };
+};
+
+export { updateSortButtons, updateFilters };

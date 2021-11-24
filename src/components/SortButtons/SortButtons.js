@@ -10,7 +10,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './SortButtons.module.scss';
 
-
 const SortButtons = function (props) {
   const { sortButtons, updateSortButtons } = props;
   // console.log(props)
@@ -18,26 +17,25 @@ const SortButtons = function (props) {
   // получает sortButtons из store и отрисовывает на стрнице
   const buttons = sortButtons.map(({ name, label, isActive }) => {
     let className;
-    
+
     // если isActive элемента true, то присваивает active класс
-    if(isActive){
-      className = styles.active
-    }
-    
-    // обрабатывает клик по элементу 
-    const onClick =()=>{
-      const newArr = [...sortButtons].map((el )=>{
-        if(el.name === name){ 
-          el.isActive = true; 
-        }else {
-          el.isActive = false;
-        }
-        return el
-      })
-      // вызывет экшен updateSortButtons и передает новый масиив 
-      updateSortButtons(newArr)
+    if (isActive) {
+      className = styles.active;
     }
 
+    // обрабатывает клик по элементу
+    const onClick = () => {
+      const newArr = [...sortButtons].map((el) => {
+        if (el.name === name) {
+          el.isActive = true;
+        } else {
+          el.isActive = false;
+        }
+        return el;
+      });
+      // вызывет экшен updateSortButtons и передает новый масиив
+      updateSortButtons(newArr);
+    };
 
     return (
       <div key={name} onClick={onClick} className={className}>
@@ -45,27 +43,26 @@ const SortButtons = function (props) {
       </div>
     );
   });
-  
+
   return <div className={styles.tabs}>{buttons}</div>;
 };
 
-// redux props 
-const mapStateToProps =(sortButtons)=>{
-  return sortButtons
-}
+// redux props
+const mapStateToProps = (sortButtons) => {
+  return sortButtons;
+};
 
-// redux metods 
-const mapDispathToProps =(dispatch)=>{
+// redux metods
+const mapDispathToProps = (dispatch) => {
   return {
-    // обновление масиива с состоянием кномпок сортировкм 
-    updateSortButtons: (newSortButtons)=>{
+    // обновление масиива с состоянием кномпок сортировкм
+    updateSortButtons: (newSortButtons) => {
       dispatch({
         type: 'UPDATE_SORT_BUTTONS',
-        payload: newSortButtons
-      })
-      
-    }
-  }
-}
+        payload: newSortButtons,
+      });
+    },
+  };
+};
 
 export default connect(mapStateToProps, mapDispathToProps)(SortButtons);

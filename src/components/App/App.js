@@ -10,9 +10,7 @@ import TicketsList from '../TicketsList';
 import Button from '../Button';
 import Burger from '../Burger';
 
-
 const App = function () {
-
   return (
     <div className={styles.app}>
       <header className={styles.header}>
@@ -30,7 +28,7 @@ const App = function () {
           </div>
           <div>
             <div>
-              <SortButtons/>
+              <SortButtons />
             </div>
             <div>
               <TicketsList />
