@@ -18,8 +18,6 @@ const Filters = function (props) {
 
   // рендерит фильтры на страницу
   const filters = [...filtersItem].map(({ label, name, isCheck }) => {
-    // console.log(filtersItem)
-
     // если фильтр зачекан isCheck = true увеличивает счетчик
     if (isCheck) {
       countSelectedFilters++;
@@ -27,8 +25,7 @@ const Filters = function (props) {
 
     // следит за изменением чекбоксов
     const onChange = (event) => {
-
-      // новый массив фиьтров который будет изменяться в зависимости от условия 
+      // новый массив фиьтров который будет изменяться в зависимости от условия
       let newArrFilters = [...filtersItem];
 
       // Если включается галочка "Все" - проставляются галочки всем остальным фильтрам
@@ -48,16 +45,16 @@ const Filters = function (props) {
       }
 
       // Если при включенной галочке "Все" снимается любая другая галочка - галочка "Все" тоже снимается
-      if (name !== 'all') { 
+      if (name !== 'all') {
         // если выбран фильтр не "Все", то просто меняет фильтру isCheck на event.target.checked
         newArrFilters.map((el) => {
           if (el.name === name) {
             el.isCheck = event.target.checked;
             if (!event.target.checked) {
-              countSelectedFilters--; // !но если это false, то счетчик уменьшается 
+              countSelectedFilters--; // !но если это false, то счетчик уменьшается
             }
           }
-          // галочка с фильтра "Все" снимается 
+          // галочка с фильтра "Все" снимается
           if (el.name === 'all') {
             el.isCheck = false;
           }
@@ -66,7 +63,8 @@ const Filters = function (props) {
       }
 
       // Если проставить каждую галочку по пересадкам - галочка "Все" автоматически включится
-      if (countSelectedFilters === 3 && name !== 'all') { // если уже выбраны 3 фильтра, то при выборе следующего (последнего не 'all') галочки проставляются всем 
+      if (countSelectedFilters === 3 && name !== 'all') {
+        // если уже выбраны 3 фильтра, то при выборе следующего (последнего не 'all') галочки проставляются всем
         newArrFilters.map((el) => {
           el.isCheck = true;
           return el;
@@ -95,6 +93,7 @@ const Filters = function (props) {
     </div>
   );
 };
+
 // redux props
 const mapStateToProps = (filtersItem) => {
   return filtersItem;

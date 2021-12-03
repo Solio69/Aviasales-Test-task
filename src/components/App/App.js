@@ -1,4 +1,10 @@
-import React from 'react';
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-unused-vars */
+/* eslint-disable arrow-body-style */
+
+import React, { Component } from 'react';
 
 import styles from './App.module.scss';
 
@@ -10,35 +16,38 @@ import TicketsList from '../TicketsList';
 import Button from '../Button';
 import Burger from '../Burger';
 
-const App = function () {
-  return (
-    <div className={styles.app}>
-      <header className={styles.header}>
-        <div className={styles['header__logo-wrapper']}>
-          <Logo />
-        </div>
-        <div className={styles['header__burger-wrapper']}>
-          <Burger />
-        </div>
-      </header>
-      <main className={styles.main}>
-        <section className={styles.main__content}>
-          <div>
-            <Filters />
+class App extends Component {
+  render() {
+    // console.log(this.props)
+    return (
+      <div className={styles.app}>
+        <header className={styles.header}>
+          <div className={styles['header__logo-wrapper']}>
+            <Logo />
           </div>
-          <div>
+          <div className={styles['header__burger-wrapper']}>
+            <Burger />
+          </div>
+        </header>
+        <main className={styles.main}>
+          <section className={styles.main__content}>
             <div>
-              <SortButtons />
+              <Filters />
             </div>
             <div>
-              <TicketsList />
-              <Button />
+              <div>
+                <SortButtons />
+              </div>
+              <div>
+                <TicketsList />
+                <Button />
+              </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-};
+          </section>
+        </main>
+      </div>
+    );
+  }
+}
 
 export default App;

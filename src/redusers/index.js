@@ -14,6 +14,8 @@ const initialState = {
     { label: '2 пересадки', name: '2 transfer', isCheck: false },
     { label: '3 пересадки', name: '3 transfer', isCheck: false },
   ],
+
+  packetTickets: [],
 };
 
 const reduser = (state = initialState, action) => {
@@ -28,6 +30,12 @@ const reduser = (state = initialState, action) => {
       return {
         ...state,
         filtersItem: action.payload,
+      };
+
+    case 'UPDATE_PACKET_TICKETS':
+      return {
+        ...state,
+        packetTickets: action.payload,
       };
 
     default:
