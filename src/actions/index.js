@@ -21,6 +21,14 @@ const updateFilters = (newFilters) => {
   };
 };
 
+// обновляет searchId
+const updateSearchId = (searchId) => {
+  return {
+    type: 'UPDATE_SEARCH_ID',
+    payload: searchId,
+  };
+};
+
 // обновляет список билетов
 const updatePacketTickets = (packetTickets) => {
   return {
@@ -29,16 +37,52 @@ const updatePacketTickets = (packetTickets) => {
   };
 };
 
+// обновляет количество показываемых билетов
+const updateTicketsCounter = (newCounter) => {
+  return {
+    type: 'UPDATE_TICKETS_COUNTER',
+    payload: newCounter,
+  };
+};
+
+// переключает isStop в true по окончании загрузки всех блилетов
+const toggleStop = (booleanValue) => {
+  return {
+    type: 'TOGGLE_STOP',
+    payload: booleanValue,
+  };
+};
+
+// обновляет поле error
+const ticketsError = (error) => {
+  return {
+    type: 'TICKETS_ERROR',
+    payload: error,
+  };
+};
+
 // получает билеты и сохраняет в store
 const getPacketTickets = (searchId) => {
   return (dispatch) => {
     // получает билеты
     apiServise.getTickets(searchId).then((res) => {
-      // сохраняет в store
-      // console.log(res)
+      // сохраняет билеты в store
+      // console.log(res);
       dispatch(updatePacketTickets(res.tickets));
+      // если от сервера пришло, что stops: true обновляет isStop
+      if (res.stop) {
+        dispatch(toggleStop(res.stop));
+      }
     });
   };
 };
 
-export { updateSortButtons, updateFilters, getPacketTickets };
+export {
+  updateSortButtons,
+  updateFilters,
+  getPacketTickets,
+  updateSearchId,
+  updateTicketsCounter,
+  toggleStop,
+  ticketsError,
+};

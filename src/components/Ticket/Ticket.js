@@ -18,20 +18,20 @@ const Ticket = function (props) {
   const routeBack = segments[1];
 
   // вернет строку с количеством пеерсадок (берет ее из label элементов фильтра)
-  const transfersStr = (num, arr)=>{
+  const transfersStr = (num, arr) => {
     switch (num) {
       case 0:
-        return arr.find((el)=> el.name === 'no transfers').label
+        return arr.find((el) => el.name === 'no transfers').label;
       case 1:
-        return arr.find((el)=> el.name === '1 transfer').label
+        return arr.find((el) => el.name === '1 transfer').label;
       case 2:
-        return arr.find((el)=> el.name === '2 transfer').label
+        return arr.find((el) => el.name === '2 transfer').label;
       case 3:
-        return arr.find((el)=> el.name === '3 transfer').label
+        return arr.find((el) => el.name === '3 transfer').label;
       default:
-      return ''
+        return '';
     }
-  }
+  };
 
   // сколько пеерсадок туда
   const howManyTransfersThere = transfersStr(routeThere.stops.length, filtersItem);

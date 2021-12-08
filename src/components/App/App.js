@@ -5,8 +5,9 @@
 /* eslint-disable arrow-body-style */
 
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import styles from './App.module.scss';
+import { getPacketTickets, updateSearchId, ticketsError } from '../../actions/index';
 
 // components
 import Logo from '../Logo';
@@ -15,10 +16,29 @@ import SortButtons from '../SortButtons';
 import TicketsList from '../TicketsList';
 import Button from '../Button';
 import Burger from '../Burger';
+import apiServise from '../../servises/ApiService';
 
 class App extends Component {
+  componentDidMount() {
+    apiServise
+      .getKey() // получает searchId
+      .then((searchId) => {
+        this.props.fetchGetSearchId(searchId); // сохраняет в redux searchId
+        this.props.fetchGetTickets(searchId); // сохраняет в redux packetTickets
+      })
+      .catch((err) => {
+        this.props.ticketsError(err);
+      });
+  }
+
+  componentDidUpdate() {
+    // если нет ошибки и не все билеты пока получены продолжает делать запрос
+    if (this.props.error === null && this.props.isStop === false) {
+      this.props.fetchGetTickets(this.props.searchId);
+    }
+  }
+
   render() {
-    // console.log(this.props)
     return (
       <div className={styles.app}>
         <header className={styles.header}>
@@ -49,5 +69,14 @@ class App extends Component {
     );
   }
 }
+// redux props
+const mapStateToProps = (response) => response;
 
-export default App;
+// redux metods
+const mapDispathToProps = (dispatch) => ({
+  fetchGetTickets: (packetTickets) => dispatch(getPacketTickets(packetTickets)),
+  fetchGetSearchId: (searchId) => dispatch(updateSearchId(searchId)),
+  ticketsError: (error) => dispatch(ticketsError(error)),
+});
+
+export default connect(mapStateToProps, mapDispathToProps)(App);
