@@ -9,13 +9,15 @@ const initialState = {
 
   filtersItem: [
     { label: 'Все', name: 'all', isCheck: false },
-    { label: 'Без пересадок', name: 'no transfers', isCheck: false },
-    { label: '1 пересадка', name: '1 transfer', isCheck: false },
-    { label: '2 пересадки', name: '2 transfer', isCheck: false },
-    { label: '3 пересадки', name: '3 transfer', isCheck: false },
+    { label: 'Без пересадок', name: '0', isCheck: false },
+    { label: '1 пересадка', name: '1', isCheck: false },
+    { label: '2 пересадки', name: '2', isCheck: false },
+    { label: '3 пересадки', name: '3', isCheck: false },
   ],
 
   searchId: '',
+
+  firstPacketTickets: [],
 
   packetTickets: [],
 
@@ -44,6 +46,12 @@ const reduser = (state = initialState, action) => {
       return {
         ...state,
         searchId: action.payload,
+      };
+
+    case 'UPDATE_FIRST_PACKET_TICKETS':
+      return {
+        ...state,
+        firstPacketTickets: action.payload,
       };
 
     case 'UPDATE_PACKET_TICKETS':

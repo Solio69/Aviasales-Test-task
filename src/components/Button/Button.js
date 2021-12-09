@@ -19,7 +19,7 @@ const Button = function (props) {
     props.updateTicketsCounter(count);
   };
 
-  // кнопка не отображается если есть ошибка 
+  // кнопка не отображается если есть ошибка
   const button = !props.error ? (
     <div className={styles['button-show-more__wrapper']}>
       <button type="button" onClick={onClick}>

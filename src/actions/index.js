@@ -29,6 +29,14 @@ const updateSearchId = (searchId) => {
   };
 };
 
+// записывает первую порцию билетов в store
+const updateFirstPacketTickets = (firstPacketTickets) => {
+  return {
+    type: 'UPDATE_FIRST_PACKET_TICKETS',
+    payload: firstPacketTickets,
+  };
+};
+
 // обновляет список билетов
 const updatePacketTickets = (packetTickets) => {
   return {
@@ -66,8 +74,8 @@ const getPacketTickets = (searchId) => {
   return (dispatch) => {
     // получает билеты
     apiServise.getTickets(searchId).then((res) => {
-      // сохраняет билеты в store
       // console.log(res);
+      // сохраняет билеты в store
       dispatch(updatePacketTickets(res.tickets));
       // если от сервера пришло, что stops: true обновляет isStop
       if (res.stop) {
@@ -80,6 +88,7 @@ const getPacketTickets = (searchId) => {
 export {
   updateSortButtons,
   updateFilters,
+  updateFirstPacketTickets,
   getPacketTickets,
   updateSearchId,
   updateTicketsCounter,

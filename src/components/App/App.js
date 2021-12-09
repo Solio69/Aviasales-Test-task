@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './App.module.scss';
-import { getPacketTickets, updateSearchId, ticketsError } from '../../actions/index';
+import { getPacketTickets, updateSearchId, ticketsError, updateFirstPacketTickets } from '../../actions/index';
 
 // components
 import Logo from '../Logo';
@@ -23,8 +23,18 @@ class App extends Component {
     apiServise
       .getKey() // получает searchId
       .then((searchId) => {
-        this.props.fetchGetSearchId(searchId); // сохраняет в redux searchId
-        this.props.fetchGetTickets(searchId); // сохраняет в redux packetTickets
+        // получает одну порцию билетов и записывает в store firstPacketTickets
+        apiServise.getTickets(searchId).then((res) => {
+          this.props.updateFirstPacketTickets(res.tickets);
+        });
+
+        return searchId;
+      })
+      .then((searchId) => {
+        // сохраняет в redux searchId
+        this.props.updateSearchId(searchId);
+        // сохраняет в redux packetTickets
+        this.props.getPacketTickets(searchId);
       })
       .catch((err) => {
         this.props.ticketsError(err);
@@ -34,7 +44,7 @@ class App extends Component {
   componentDidUpdate() {
     // если нет ошибки и не все билеты пока получены продолжает делать запрос
     if (this.props.error === null && this.props.isStop === false) {
-      this.props.fetchGetTickets(this.props.searchId);
+      this.props.getPacketTickets(this.props.searchId);
     }
   }
 
@@ -74,9 +84,13 @@ const mapStateToProps = (response) => response;
 
 // redux metods
 const mapDispathToProps = (dispatch) => ({
-  fetchGetTickets: (packetTickets) => dispatch(getPacketTickets(packetTickets)),
-  fetchGetSearchId: (searchId) => dispatch(updateSearchId(searchId)),
+  getPacketTickets: (packetTickets) => dispatch(getPacketTickets(packetTickets)),
+
+  updateSearchId: (searchId) => dispatch(updateSearchId(searchId)),
+
   ticketsError: (error) => dispatch(ticketsError(error)),
+
+  updateFirstPacketTickets: (firstPacketTickets) => dispatch(updateFirstPacketTickets(firstPacketTickets)),
 });
 
 export default connect(mapStateToProps, mapDispathToProps)(App);
