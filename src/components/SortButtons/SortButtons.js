@@ -44,7 +44,7 @@ const SortButtons = function (props) {
     );
   });
 
-  return <div className={styles.tabs}>{buttons}</div>;
+  return <div className={styles['sort-buttons']}>{buttons}</div>;
 };
 
 // redux props

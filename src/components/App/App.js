@@ -22,14 +22,14 @@ class App extends Component {
   componentDidMount() {
     apiServise
       .getKey() // получает searchId
-      .then((searchId) => {
-        // получает одну порцию билетов и записывает в store firstPacketTickets
-        apiServise.getTickets(searchId).then((res) => {
-          this.props.updateFirstPacketTickets(res.tickets);
-        });
+      // .then((searchId) => {
+      //   // получает одну порцию билетов и записывает в store firstPacketTickets
+      //   apiServise.getTickets(searchId).then((res) => {
+      //     this.props.updateFirstPacketTickets(res.tickets);
+      //   });
 
-        return searchId;
-      })
+      //   return searchId;
+      // })
       .then((searchId) => {
         // сохраняет в redux searchId
         this.props.updateSearchId(searchId);
@@ -90,7 +90,7 @@ const mapDispathToProps = (dispatch) => ({
 
   ticketsError: (error) => dispatch(ticketsError(error)),
 
-  updateFirstPacketTickets: (firstPacketTickets) => dispatch(updateFirstPacketTickets(firstPacketTickets)),
+  // updateFirstPacketTickets: (firstPacketTickets) => dispatch(updateFirstPacketTickets(firstPacketTickets)),
 });
 
 export default connect(mapStateToProps, mapDispathToProps)(App);

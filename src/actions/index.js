@@ -30,12 +30,12 @@ const updateSearchId = (searchId) => {
 };
 
 // записывает первую порцию билетов в store
-const updateFirstPacketTickets = (firstPacketTickets) => {
-  return {
-    type: 'UPDATE_FIRST_PACKET_TICKETS',
-    payload: firstPacketTickets,
-  };
-};
+// const updateFirstPacketTickets = (firstPacketTickets) => {
+//   return {
+//     type: 'UPDATE_FIRST_PACKET_TICKETS',
+//     payload: firstPacketTickets,
+//   };
+// };
 
 // обновляет список билетов
 const updatePacketTickets = (packetTickets) => {
@@ -88,7 +88,7 @@ const getPacketTickets = (searchId) => {
 export {
   updateSortButtons,
   updateFilters,
-  updateFirstPacketTickets,
+  // updateFirstPacketTickets,
   getPacketTickets,
   updateSearchId,
   updateTicketsCounter,

@@ -17,7 +17,7 @@ const initialState = {
 
   searchId: '',
 
-  firstPacketTickets: [],
+  // firstPacketTickets: [],
 
   packetTickets: [],
 
@@ -48,11 +48,11 @@ const reduser = (state = initialState, action) => {
         searchId: action.payload,
       };
 
-    case 'UPDATE_FIRST_PACKET_TICKETS':
-      return {
-        ...state,
-        firstPacketTickets: action.payload,
-      };
+    // case 'UPDATE_FIRST_PACKET_TICKETS':
+    //   return {
+    //     ...state,
+    //     firstPacketTickets: action.payload,
+    //   };
 
     case 'UPDATE_PACKET_TICKETS':
       return {
