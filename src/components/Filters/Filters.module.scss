@@ -5,10 +5,8 @@
     color: #4A4A4A;
     border-radius: 3px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
-    @media (max-width: 665px) {
-        display: none;
-    }
-    
+    margin-right: 20px;
+    max-width: 600px;
 
     div{
         
@@ -19,6 +17,13 @@
         line-height: 12px;
 
         padding: 20px;
+
+        @media (max-width: 665px) {
+            padding: 10px 0 0 20px;
+        }
+        @media (max-width: 372px){
+            font-size: 10px;
+        }
     }
 
     ul{
@@ -45,7 +50,7 @@
                 
             }
             .checkbox-input:checked + .check-box{
-                background-image: url('./check-on.svg');
+                background-image: url('../../images/check-on.svg');
             }
             .check-box{
                 position: absolute;
@@ -53,12 +58,15 @@
                 height: 20px;
                 margin-left: -30px;
         
-                background-image: url('./check-off.svg');
+                background-image: url('../../images/check-off.svg');
                 background-repeat: no-repeat;
             }
             .checkbox-label{
                 padding-left: 30px;
                 
+            }
+            @media (max-width: 372px){
+                padding: 5px 0 5px 20px;
             }
         }
 
@@ -67,6 +75,22 @@
             cursor: pointer;
             transition: background-color 0.5s;
         }
+        @media (max-width: 665px) {
+   
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-bottom: 10px;
+            :hover{
+                background-color: #FFFFFF;
+            
+            }
+        }
+    }
+
+    @media (max-width: 665px) {
+   
+        margin-right: 0px;
     }
     
 }

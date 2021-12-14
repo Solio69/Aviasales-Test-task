@@ -1,15 +1,18 @@
-/* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable consistent-return */
+/* eslint-disable no-bitwise */
 /* eslint-disable prefer-template */
 /* eslint-disable no-else-return */
-/* eslint-disable no-bitwise */
-/* eslint-disable react/prop-types */
+
+
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './Ticket.module.scss';
 
 const Ticket = function (props) {
-  const { ticket, filtersItem } = props;
+  const { ticket, filterItems } = props;
   const { price, carrier, segments } = ticket;
 
   // туда
@@ -34,9 +37,9 @@ const Ticket = function (props) {
   };
 
   // сколько пеерсадок туда
-  const howManyTransfersThere = transfersStr(routeThere.stops.length, filtersItem);
+  const howManyTransfersThere = transfersStr(routeThere.stops.length, filterItems);
   // сколько пеерсадок обратно
-  const howManyTransfersBack = transfersStr(routeBack.stops.length, filtersItem);
+  const howManyTransfersBack = transfersStr(routeBack.stops.length, filterItems);
 
   // создает новую дату с временем прибытия
   const createArrivalData = (data1, minutes) => {
@@ -167,6 +170,17 @@ const Ticket = function (props) {
   );
 };
 
-const mapStateToProps = (response) => response;
+// const mapStateToProps = (response) => response;
+const mapStateToProps = ({ filterItems }) => ({ filterItems })
+
+Ticket.defaultProps = {
+  filterItems:[]
+};
+
+Ticket.propTypes = {
+  filterItems: PropTypes.arrayOf(PropTypes.object),
+  ticket: PropTypes.object.isRequired
+  
+};
 
 export default connect(mapStateToProps)(Ticket);

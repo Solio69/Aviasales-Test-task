@@ -44,6 +44,10 @@
                     line-height: 18px;
                     letter-spacing: 0.5px;
                     text-transform: uppercase;
+                    @media (max-width: 372px){
+                        font-size: 10px;
+                      
+                    }
                 }
         
                 .ticket-content__text{
@@ -53,12 +57,17 @@
                     font-size: 14px;
                     line-height: 21px;
                     color: #4A4A4A;
+                    @media (max-width: 372px){
+                        font-size: 10px;
+                      
+                    }
                 }
             }
 
             
         }
-
+        
         
     }
+    
 }

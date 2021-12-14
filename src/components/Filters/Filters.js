@@ -1,32 +1,29 @@
-/* eslint-disable prefer-const */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
-/* eslint-disable react/prop-types */
-/* eslint-disable arrow-body-style */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
+
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { updateFilters } from '../../actions/index';
 import styles from './Filters.module.scss';
 
 const Filters = function (props) {
-  const { filtersItem, updateFilters } = props;
+  const { filterItems, updateFilters } = props;
 
   // счетчик выбранных фильтров
   let countSelectedFilters = 0;
 
   // рендерит фильтры на страницу
-  const filters = [...filtersItem].map(({ label, name, isCheck }) => {
+  const filters = [...filterItems].map(({ label, name, isCheck }) => {
     // если фильтр зачекан isCheck = true увеличивает счетчик
     if (isCheck) {
-      countSelectedFilters++;
+      countSelectedFilters+=1;
     }
 
     // следит за изменением чекбоксов
     const onChange = (event) => {
       // новый массив фиьтров который будет изменяться в зависимости от условия
-      let newArrFilters = [...filtersItem];
+      const newArrFilters = [...filterItems];
 
       // Если включается галочка "Все" - проставляются галочки всем остальным фильтрам
       if (name === 'all' && isCheck === false) {
@@ -51,7 +48,7 @@ const Filters = function (props) {
           if (el.name === name) {
             el.isCheck = event.target.checked;
             if (!event.target.checked) {
-              countSelectedFilters--; // !но если это false, то счетчик уменьшается
+              countSelectedFilters-=1; // !но если это false, то счетчик уменьшается
             }
           }
           // галочка с фильтра "Все" снимается
@@ -94,21 +91,17 @@ const Filters = function (props) {
   );
 };
 
-// redux props
-const mapStateToProps = (filtersItem) => {
-  return filtersItem;
-};
+const mapStateToProps = ({ filterItems }) => ({ filterItems })
 
-// redux metods
-const mapDispathToProps = (dispatch) => {
-  return {
-    updateFilters: (newFilters) => {
-      dispatch({
-        type: 'UPDATE_FILTERS',
-        payload: newFilters,
-      });
-    },
-  };
+const mapDispathToProps = (dispatch) => ({
+  updateFilters: (newFilters) => dispatch(updateFilters(newFilters)),
+})
+
+
+
+Filters.propTypes = {
+  filterItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateFilters: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispathToProps)(Filters);

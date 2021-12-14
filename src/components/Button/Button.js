@@ -1,52 +1,44 @@
-/* eslint-disable react/jsx-fragments */
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable operator-assignment */
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-shadow */
+
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { updateTicketsCounter } from '../../actions/index';
 import styles from './Button.module.scss';
-import ErrorAlert from '../ErrorAlert';
 
 const Button = function (props) {
-  // console.log(props);
+
+  const{ticketsCounter,updateTicketsCounter}=props
 
   // прибавляет 5 билетов к ticketsCounter в state
   const onClick = () => {
-    const count = props.ticketsCounter + 5;
-    props.updateTicketsCounter(count);
+    const count = ticketsCounter + 5;
+    updateTicketsCounter(count);
   };
 
-  // кнопка не отображается если есть ошибка
-  const button = !props.error ? (
+  return (
     <div className={styles['button-show-more__wrapper']}>
       <button type="button" onClick={onClick}>
         Показать еще 5 билетов!
       </button>
     </div>
-  ) : null;
-
-  // отображается ошибка
-  const errorShow = props.error ? <ErrorAlert /> : null;
-
-  return (
-    <React.Fragment>
-      {button}
-      {errorShow}
-    </React.Fragment>
   );
 };
 
-// redux props
-const mapStateToProps = (response) => response;
+const mapStateToProps = ({ ticketsCounter }) => ({ ticketsCounter });
 
-// redux metods
-const mapDispathToProps = (dispatch) => {
-  return {
-    updateTicketsCounter: (newCounter) => dispatch(updateTicketsCounter(newCounter)),
-  };
+const mapDispathToProps = (dispatch) => ({
+  updateTicketsCounter: (newCounter) => dispatch(updateTicketsCounter(newCounter)),
+})
+
+
+Button.defaultProps = {
+  ticketsCounter: 5,
+};
+
+Button.propTypes = {
+  updateTicketsCounter:PropTypes.func.isRequired,
+ ticketsCounter: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispathToProps)(Button);

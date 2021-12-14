@@ -1,76 +1,73 @@
-/* eslint-disable react/prefer-stateless-function */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
+/* eslint-disable no-shadow */
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
+
 import styles from './App.module.scss';
-import { getPacketTickets, updateSearchId, ticketsError, updateFirstPacketTickets } from '../../actions/index';
+import { getPacketTickets, updateSearchId, ticketsError } from '../../actions/index';
 
 // components
 import Logo from '../Logo';
 import Filters from '../Filters';
 import SortButtons from '../SortButtons';
 import TicketsList from '../TicketsList';
-import Button from '../Button';
-import Burger from '../Burger';
+import Loader from '../Loader';
+
 import apiServise from '../../servises/ApiService';
 
 class App extends Component {
+  
   componentDidMount() {
+    const {updateSearchId, getPacketTickets, ticketsError}=this.props
     apiServise
-      .getKey() // получает searchId
-      // .then((searchId) => {
-      //   // получает одну порцию билетов и записывает в store firstPacketTickets
-      //   apiServise.getTickets(searchId).then((res) => {
-      //     this.props.updateFirstPacketTickets(res.tickets);
-      //   });
-
-      //   return searchId;
-      // })
+      .getKey()
       .then((searchId) => {
         // сохраняет в redux searchId
-        this.props.updateSearchId(searchId);
+        updateSearchId(searchId);
         // сохраняет в redux packetTickets
-        this.props.getPacketTickets(searchId);
+        getPacketTickets(searchId);
       })
       .catch((err) => {
-        this.props.ticketsError(err);
+        ticketsError(err);
       });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+
+    const {error, isStop, packetTickets, getPacketTickets, searchId}=this.props
     // если нет ошибки и не все билеты пока получены продолжает делать запрос
-    if (this.props.error === null && this.props.isStop === false) {
-      this.props.getPacketTickets(this.props.searchId);
+    if (
+      prevProps.packetTickets !== packetTickets &&
+      error === null &&
+      isStop === false
+    ) {
+      getPacketTickets(searchId);
     }
   }
 
   render() {
+    const {error}=this.props
     return (
       <div className={styles.app}>
         <header className={styles.header}>
           <div className={styles['header__logo-wrapper']}>
             <Logo />
           </div>
-          <div className={styles['header__burger-wrapper']}>
-            <Burger />
-          </div>
         </header>
         <main className={styles.main}>
-          <section className={styles.main__content}>
+          {!error ? <Loader /> : null}
+          <section className={styles['main__content-wrapper']}>
             <div>
               <Filters />
             </div>
-            <div>
+            <div className={styles.main__content}>
               <div>
                 <SortButtons />
               </div>
               <div>
                 <TicketsList />
-                <Button />
               </div>
             </div>
           </section>
@@ -79,18 +76,31 @@ class App extends Component {
     );
   }
 }
-// redux props
-const mapStateToProps = (response) => response;
 
-// redux metods
+const mapStateToProps = ({ error, isStop, searchId, packetTickets }) => ({error, isStop, searchId, packetTickets});
+
 const mapDispathToProps = (dispatch) => ({
   getPacketTickets: (packetTickets) => dispatch(getPacketTickets(packetTickets)),
-
   updateSearchId: (searchId) => dispatch(updateSearchId(searchId)),
-
   ticketsError: (error) => dispatch(ticketsError(error)),
-
-  // updateFirstPacketTickets: (firstPacketTickets) => dispatch(updateFirstPacketTickets(firstPacketTickets)),
 });
+
+
+App.defaultProps = {
+  packetTickets: [],
+  error:false,
+  isStop:false,
+  searchId: ''
+};
+
+App.propTypes = {
+  packetTickets:PropTypes.arrayOf(PropTypes.object),
+  updateSearchId:PropTypes.func.isRequired,
+  getPacketTickets:PropTypes.func.isRequired,
+  ticketsError:PropTypes.func.isRequired,
+  error:PropTypes.bool,
+  isStop:PropTypes.bool,
+  searchId: PropTypes.string
+};
 
 export default connect(mapStateToProps, mapDispathToProps)(App);

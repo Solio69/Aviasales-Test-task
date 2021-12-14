@@ -1,5 +1,6 @@
 /* eslint-disable default-param-last */
 
+
 const initialState = {
   sortButtons: [
     { name: 'inexpensive', label: 'Самый дешевый', isActive: true },
@@ -7,12 +8,12 @@ const initialState = {
     { name: 'optimal', label: 'Оптимальный', isActive: false },
   ],
 
-  filtersItem: [
-    { label: 'Все', name: 'all', isCheck: false },
-    { label: 'Без пересадок', name: '0', isCheck: false },
-    { label: '1 пересадка', name: '1', isCheck: false },
-    { label: '2 пересадки', name: '2', isCheck: false },
-    { label: '3 пересадки', name: '3', isCheck: false },
+  filterItems: [
+    { label: 'Все', name: 'all', isCheck: true },
+    { label: 'Без пересадок', name: '0', isCheck: true },
+    { label: '1 пересадка', name: '1', isCheck: true },
+    { label: '2 пересадки', name: '2', isCheck: true },
+    { label: '3 пересадки', name: '3', isCheck: true },
   ],
 
   searchId: '',
@@ -39,7 +40,7 @@ const reduser = (state = initialState, action) => {
     case 'UPDATE_FILTERS':
       return {
         ...state,
-        filtersItem: action.payload,
+        filterItems: action.payload,
       };
 
     case 'UPDATE_SEARCH_ID':

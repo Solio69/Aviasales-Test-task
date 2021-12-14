@@ -1,18 +1,14 @@
-/* eslint-disable array-callback-return */
+/* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable arrow-body-style */
+
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { updateSortButtons } from '../../actions/index';
 import styles from './SortButtons.module.scss';
 
 const SortButtons = function (props) {
   const { sortButtons, updateSortButtons } = props;
-  // console.log(props)
 
   // получает sortButtons из store и отрисовывает на стрнице
   const buttons = sortButtons.map(({ name, label, isActive }) => {
@@ -38,7 +34,10 @@ const SortButtons = function (props) {
     };
 
     return (
-      <div key={name} onClick={onClick} className={className}>
+      <div key={name} onClick={onClick} onKeyDown={onClick} 
+      role="button"
+      tabIndex={0} 
+      className={className}>
         {label}
       </div>
     );
@@ -47,22 +46,20 @@ const SortButtons = function (props) {
   return <div className={styles['sort-buttons']}>{buttons}</div>;
 };
 
-// redux props
-const mapStateToProps = (sortButtons) => {
-  return sortButtons;
+const mapStateToProps = ({ sortButtons }) => ({ sortButtons })
+
+const mapDispathToProps = (dispatch) => ({
+  updateSortButtons: (newSortButtons) => dispatch(updateSortButtons(newSortButtons)),
+});
+
+SortButtons.defaultProps = {
+  sortButtons:[]
 };
 
-// redux metods
-const mapDispathToProps = (dispatch) => {
-  return {
-    // обновление масиива с состоянием кномпок сортировкм
-    updateSortButtons: (newSortButtons) => {
-      dispatch({
-        type: 'UPDATE_SORT_BUTTONS',
-        payload: newSortButtons,
-      });
-    },
-  };
+SortButtons.propTypes = {
+  sortButtons: PropTypes.arrayOf(PropTypes.object),
+  updateSortButtons:PropTypes.func.isRequired,
 };
+
 
 export default connect(mapStateToProps, mapDispathToProps)(SortButtons);

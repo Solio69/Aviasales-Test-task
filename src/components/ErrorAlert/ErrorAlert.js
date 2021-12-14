@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from './error_Icon.png';
+import icon from '../../images/error_Icon.png';
 
 import styles from './ErrorAlert.module.scss';
 
