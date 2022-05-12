@@ -20,7 +20,7 @@ import apiServise from '../../servises/ApiService';
 class App extends Component {
   
   componentDidMount() {
-    const {updateSearchId, getPacketTickets, ticketsError}=this.props
+    const {updateSearchId, getPacketTickets, ticketsError} = this.props
     apiServise
       .getKey()
       .then((searchId) => {

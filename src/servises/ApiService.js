@@ -29,6 +29,7 @@ class ApiServise {
       return body;
     } catch {
       return {
+        
         tickets: [], // вернет пустой массив если произойдет ошибка
       };
     }
