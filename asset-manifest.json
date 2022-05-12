@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/JM-Aviasales-Test-task/static/css/main.776ab32d.chunk.css",
-    "main.js": "/JM-Aviasales-Test-task/static/js/main.a7d8242c.chunk.js",
-    "main.js.map": "/JM-Aviasales-Test-task/static/js/main.a7d8242c.chunk.js.map",
-    "runtime-main.js": "/JM-Aviasales-Test-task/static/js/runtime-main.4300c48a.js",
-    "runtime-main.js.map": "/JM-Aviasales-Test-task/static/js/runtime-main.4300c48a.js.map",
-    "static/js/2.1816d6c0.chunk.js": "/JM-Aviasales-Test-task/static/js/2.1816d6c0.chunk.js",
-    "static/js/2.1816d6c0.chunk.js.map": "/JM-Aviasales-Test-task/static/js/2.1816d6c0.chunk.js.map",
-    "index.html": "/JM-Aviasales-Test-task/index.html",
-    "static/css/main.776ab32d.chunk.css.map": "/JM-Aviasales-Test-task/static/css/main.776ab32d.chunk.css.map",
-    "static/js/2.1816d6c0.chunk.js.LICENSE.txt": "/JM-Aviasales-Test-task/static/js/2.1816d6c0.chunk.js.LICENSE.txt",
-    "static/media/Logo.9c35a983.svg": "/JM-Aviasales-Test-task/static/media/Logo.9c35a983.svg",
-    "static/media/Filters.module.scss": "/JM-Aviasales-Test-task/static/media/check-on.1ce0103e.svg",
-    "static/media/error_Icon.2fce6214.png": "/JM-Aviasales-Test-task/static/media/error_Icon.2fce6214.png"
+    "main.css": "/Aviasales-Test-task/static/css/main.0be81716.chunk.css",
+    "main.js": "/Aviasales-Test-task/static/js/main.400bb39e.chunk.js",
+    "main.js.map": "/Aviasales-Test-task/static/js/main.400bb39e.chunk.js.map",
+    "runtime-main.js": "/Aviasales-Test-task/static/js/runtime-main.350d0bf3.js",
+    "runtime-main.js.map": "/Aviasales-Test-task/static/js/runtime-main.350d0bf3.js.map",
+    "static/js/2.32fcf8b3.chunk.js": "/Aviasales-Test-task/static/js/2.32fcf8b3.chunk.js",
+    "static/js/2.32fcf8b3.chunk.js.map": "/Aviasales-Test-task/static/js/2.32fcf8b3.chunk.js.map",
+    "index.html": "/Aviasales-Test-task/index.html",
+    "static/css/main.0be81716.chunk.css.map": "/Aviasales-Test-task/static/css/main.0be81716.chunk.css.map",
+    "static/js/2.32fcf8b3.chunk.js.LICENSE.txt": "/Aviasales-Test-task/static/js/2.32fcf8b3.chunk.js.LICENSE.txt",
+    "static/media/Logo.9c35a983.svg": "/Aviasales-Test-task/static/media/Logo.9c35a983.svg",
+    "static/media/Filters.module.scss": "/Aviasales-Test-task/static/media/check-on.1ce0103e.svg",
+    "static/media/error_Icon.2fce6214.png": "/Aviasales-Test-task/static/media/error_Icon.2fce6214.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4300c48a.js",
-    "static/js/2.1816d6c0.chunk.js",
-    "static/css/main.776ab32d.chunk.css",
-    "static/js/main.a7d8242c.chunk.js"
+    "static/js/runtime-main.350d0bf3.js",
+    "static/js/2.32fcf8b3.chunk.js",
+    "static/css/main.0be81716.chunk.css",
+    "static/js/main.400bb39e.chunk.js"
   ]
 }
