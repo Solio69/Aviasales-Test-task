@@ -2,7 +2,7 @@
   "name": "aviasales-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Solio69.github.io/JM-Aviasales-Test-task",
+  "homepage": "http://Solio69.github.io/Aviasales-Test-task",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
